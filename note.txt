@@ -1,0 +1,12 @@
+//need to have flask installed
+
+//run nyo tong code nato sa terminal to install flask
+
+// pip install flask
+
+
+//Tas pag irurun na yung mismong app
+
+//python app.py
+
+//open nyo link nato  http://127.0.0.1:5000

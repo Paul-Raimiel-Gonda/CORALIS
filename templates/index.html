@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Coral Reef Classifier</title>
+</head>
+<body>
+  <h1>Coral Reef Image Classifier</h1>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <input type="file" name="image" id="imageInput" accept="image/*" required>
+    <button type="submit">Predict</button>
+  </form>
+
+  <p id="result"></p>
+
+  <script>
+    document.getElementById('uploadForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = new FormData();
+      const imageFile = document.getElementById('imageInput').files[0];
+      formData.append('image', imageFile);
+
+      fetch('/predict', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('result').innerText = data.result || data.error;
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    });
+  </script>
+</body>
+</html>
